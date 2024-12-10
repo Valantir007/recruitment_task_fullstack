@@ -27,7 +27,9 @@
     "symfony/http-kernel": "^4.4",
     "symfony/twig-bundle": "^4.4.30",
     "symfony/webpack-encore-bundle": "^1.17",
-    "symfony/yaml": "^4.4"
+    "symfony/yaml": "^4.4",
+    "ext-bcmath": "*",
+    "ext-json": "*"
   },
   "conflict": {
     "symfony/symfony": "*"
@@ -43,6 +45,11 @@
     "auto-scripts": {
       "cache:clear": "symfony-cmd",
       "assets:install %PUBLIC_DIR%": "symfony-cmd"
-    }
+    },
+    "dev:test:phpunit": "APP_ENV=test vendor/bin/phpunit --testsuite Unit -c /var/www/html/phpunit.xml.dist -d memory_limit=256M",
+    "dev:test:integration": "APP_ENV=test vendor/bin/phpunit --testsuite Integration -c /var/www/html/phpunit.xml.dist -d memory_limit=256M"
+  },
+  "scripts-descriptions": {
+    "dev:test:phpunit": "Runs unit tests."
   }
 }
