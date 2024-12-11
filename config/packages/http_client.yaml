@@ -1,0 +1,7 @@
+framework:
+  http_client:
+    scoped_clients:
+      nbp.client:
+        base_uri: '%env(NBP_BASE_URI)%'
+        headers:
+          Accept: 'application/json'

@@ -2,7 +2,13 @@ FROM php:7.2-apache
 
 WORKDIR /var/www/html
 
-RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get update -y && apt-get upgrade -y \
+ \
+ && docker-php-ext-install \
+        bcmath \
+ && docker-php-ext-enable \
+        bcmath
+
 RUN apt-get install -y git curl zip libzip-dev
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

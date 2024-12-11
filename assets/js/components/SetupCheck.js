@@ -1,4 +1,4 @@
-// ./assets/js/components/Users.js
+// ./assets/js/components/SetupCheck.js
 
 import React, {Component} from 'react';
 import axios from 'axios';
@@ -18,12 +18,11 @@ class SetupCheck extends Component {
     }
 
     checkApiSetup() {
-        //const baseUrl = this.getBaseUrl();
-        const baseUrl = 'http://telemedi-zadanie.localhost';
+        const baseUrl = this.getBaseUrl();
         axios.get(baseUrl + `/api/setup-check?testParam=1`).then(response => {
             let responseIsOK = response.data && response.data.testParam === 1
             this.setState({ setupCheck: responseIsOK, loading: false})
-        }).catch(function (error) {
+        }).catch(error => {
             console.error(error);
             this.setState({ setupCheck: false, loading: false});
         });
